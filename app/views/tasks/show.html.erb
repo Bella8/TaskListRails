@@ -1,0 +1,7 @@
+<h1>Single Task </h1>
+<% @task.each do |task| %>
+<% task.each do |key, value| %>
+  <p><%= "#{key}: #{value}"  %></p>
+  <%="\n"%>
+  <% end %>
+    <% end %>

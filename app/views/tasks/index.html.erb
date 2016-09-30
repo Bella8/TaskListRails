@@ -1,0 +1,7 @@
+<h1>List</h1>
+<% @task_lists.each do |task| %>
+<% task.each do |key, value| %>
+    <%="\n"%>
+  <p><%= "#{key}: #{value}"  %></p>
+  <% end %>
+<% end %>
