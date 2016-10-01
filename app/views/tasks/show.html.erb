@@ -1,7 +1,9 @@
-<h1>Single Task </h1>
-<% @task.each do |task| %>
-<% task.each do |key, value| %>
-  <p><%= "#{key}: #{value}"  %></p>
-  <%="\n"%>
-  <% end %>
-    <% end %>
+ <h1>show</h1>
+
+ <ul>
+   <li>Title: <%= @new_task.title %></li>
+   <li>Description: <%= @new_task.description %></li>
+   <li>Completion status: <%= @new_task.completion_status %></li>
+   <li>Completed at: <%= @new_task.completed_a %></li>
+
+ </ul>

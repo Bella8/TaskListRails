@@ -1,7 +1,16 @@
-<h1>List</h1>
-<% @task_lists.each do |task| %>
-<% task.each do |key, value| %>
-    <%="\n"%>
-  <p><%= "#{key}: #{value}"  %></p>
-  <% end %>
-<% end %>
+<h1>List of Tasks</h1>
+
+<% @new_task.each do |task| %>
+<p>
+  <%= "Title: #{task.title}" %>
+  <% "Description: #{task.description}" %>
+  <% "Completion status: #{task.completion_status}" %>
+  <% "Completed at: #{task.completed_a}" %>
+
+  <%= link_to "Edit", task_edit_path(task) %>
+
+  <%= link_to "Task list", task_path(task) %>
+  <%= link_to "Delete", task_path(task), method: :delete, data: {confirm: "Are you sure?"} %>
+
+</p>
+ <% end %>
