@@ -1,9 +1,10 @@
- <h1>show</h1>
+ <h1>Single Task</h1>
 
  <ul>
-   <li>Title: <%= @new_task.title %></li>
-   <li>Description: <%= @new_task.description %></li>
-   <li>Completion status: <%= @new_task.completion_status %></li>
-   <li>Completed at: <%= @new_task.completed_a %></li>
-
+   <li>Title: <%= @show_task.title %></li>
+   <li>Description: <%= @show_task.description %></li>
+   <li>Completed_date: <%= @show_task.date%></li>
  </ul>
+
+<p><%= link_to "Edit", task_edit_path %>
+<%= link_to "Back", tasks_path %></p>

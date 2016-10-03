@@ -1,39 +1,39 @@
 class TasksController < ApplicationController
+
+# obtains all takks and shows it at index
   def index
-    @new_task = Task.all
-
+    @tasks_all = Task.all
   end
 
+#shows one task by id in show
   def show
-
-  @new_task = Task.find(params[:id])
-
+  @show_task = Task.find(params[:id])
   end
 
+#write new task
   def new
-    @new_task = Task.new
+    @task = Task.new
   end
 
+#creates the new task
   def create
-    @new_task = Task.new(task_params)
-
-    if @new_task.save
+    @new_task_create = Task.new(task_params) #task_params is a method
+    if @new_task_create.save
       redirect_to tasks_path
     else
       render :new
-
     end
   end
 
   def edit
-    @params = params
-    @new_task = Task.find(params[:id])
+    # @params = params
+    @task = Task.find(params[:id])
   end
 
   def update
-    @new_task = Task.find(params[:id])
-    if @new_task.update(task_params)
-          redirect_to tasks_path
+    @update_task = Task.find(params[:id])
+    if @update_task.update(task_params) #task_params is a method
+      redirect_to tasks_path
     else
       render :edit
     end
@@ -44,11 +44,20 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def completed
+    @task = Task.find(params[:id])
+    if @task.completed_at == nil
+      @task.completed_at = Date.today
+      @task.save
+      redirect_to tasks_path
+    else
+      redirect_to tasks_path
+    end
+  end
+
 
   private
   def task_params
-  #strong params.  if it's not in the strong param its not going go to the
-  # its not been saved.
-    params.require(:task).permit(:title, :description, :completion_status, :completed_a)
+    params.require(:task).permit(:title, :description, :completed, :completed_at)
   end
 end

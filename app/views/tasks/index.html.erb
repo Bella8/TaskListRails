@@ -1,16 +1,20 @@
+
 <h1>List of Tasks</h1>
+<ul>
+  <% @tasks_all.each do |task| %>
+    <li>
+      <%= link_to "#{task.title}", task_path(task) %><br/>
+      <%= link_to "Edit", task_edit_path(task) %>
+      <%= link_to "Delete", task_path(task), method: :delete, data: {confirm: "Are you sure?"} %><br/>
 
-<% @new_task.each do |task| %>
-<p>
-  <%= "Title: #{task.title}" %>
-  <% "Description: #{task.description}" %>
-  <% "Completion status: #{task.completion_status}" %>
-  <% "Completed at: #{task.completed_a}" %>
-
-  <%= link_to "Edit", task_edit_path(task) %>
-
-  <%= link_to "Task list", task_path(task) %>
-  <%= link_to "Delete", task_path(task), method: :delete, data: {confirm: "Are you sure?"} %>
-
-</p>
- <% end %>
+      <%=' Task Completed: '%>
+      <% if task.task_complete %>
+        <%= "Yes" %>
+      <% else %>
+        <%= "No" %>
+        <%= button_to "mark completed", task_completed_path(task.id), method: :patch %><br/>
+      <% end %>
+    </li><br/>
+  <% end %>
+  <%= link_to "Create new task", tasks_new_path %>
+</ul>

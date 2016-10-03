@@ -1,17 +1,1 @@
-<h1>edit</h1>
-
-<%= @params %>
-<%= form_for @new_task, method: :patch do |f| %>
-  <p><%= f.label :Title %>:</p>
-  <p><%= f.text_field :title %></p>
-  <p><%= f.label :Description %>:</p>
-  <p><%= f.text_field :description %></p>
-  <p><%= f.label :Completion_status %>:</p>
-  <p><%= f.text_field :completion_status %></p>
-  <p><%= f.label :completed_at %>:</p>
-  <p><%= f.text_field :completed_a %></p>
-  <!-- <%# f.label :Done %>
-  <%# f.check_box :done %> -->
-  <p><%= f.submit "Submit" %></p>
-
-<% end %>
+<%= render "form", method: :patch %>
