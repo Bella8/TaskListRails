@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :find_task, only: [:show, :edit, :update, :completed]
 
 # obtains all takks and shows it at index
   def index
@@ -6,9 +7,7 @@ class TasksController < ApplicationController
   end
 
 #shows one task by id in show
-  def show
-  @show_task = Task.find(params[:id])
-  end
+  def show;end
 
 #write new task
   def new
@@ -25,14 +24,10 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit
-    # @params = params
-    @task = Task.find(params[:id])
-  end
+  def edit;end
 
   def update
-    @update_task = Task.find(params[:id])
-    if @update_task.update(task_params) #task_params is a method
+    if @task.update(task_params) #task_params is a method
       redirect_to tasks_path
     else
       render :edit
@@ -45,7 +40,6 @@ class TasksController < ApplicationController
   end
 
   def completed
-    @task = Task.find(params[:id])
     if @task.completed_at == nil
        @task.completed_at = Date.today
        @task.save
@@ -55,8 +49,10 @@ class TasksController < ApplicationController
     end
   end
 
-
   private
+  def find_task
+    @task = Task.find(params[:id])
+  end
   def task_params
     params.require(:task).permit(:title, :description, :completed, :completed_at)
   end
