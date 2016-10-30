@@ -1,0 +1,2 @@
+
+<% if logged_in? %> Welcome, <%= current_user.name %>! <br /><%= link_to "My Tasks", tasks_path %> <% end %>
