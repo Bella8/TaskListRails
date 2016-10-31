@@ -1,10 +1,19 @@
-<h1>Single Task</h1>
 
+<article class="single-task">
+  <div class="wrap row small-up-1">
+  <h3>Task</h3><hr>
+<div class="column">
 <ul>
-   <li>Title: <%= @task.title %></li>
+   <li>Title: <%= (@task.title).capitalize %></li>
    <li>Description: <%= @task.description %></li>
    <li>Completed_date: <%= @task.date%></li>
 </ul>
-
-<p><%= link_to "Edit", task_edit_path %>
-   <%= link_to "Back", tasks_path %></p>
+  </div>
+<div class="column">
+<ul>
+  <button class="button"><%= link_to "Edit", task_edit_path %></button>
+  <button class="button"><%= link_to "Back", tasks_path %></button>
+</ul>
+  </div>
+  </div>
+</article>

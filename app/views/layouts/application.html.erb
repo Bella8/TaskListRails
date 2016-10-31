@@ -8,17 +8,26 @@
 </head>
 <body>
   <header>
-    <h3><%= link_to "Welcome to Task List!", root_path %></h3>
+    <div class="top-bar">
     <nav>
-      <% if session[:user_id] %>
-      <%= button_to "Log out", sessions_path, method: :delete %>
-      <% else %>
-      <%= button_to "Log In", "/auth/github" %>
-      <% end %>
-      <%= flash[:notice] %>
-      <%# flash[:errors] %>
+      <div class="wrap">
+      <div class="top-bar-left">
+      <h3 class="title"><%= link_to "Welcome to Task List!", root_path %></h3>
+      </div>
+      <div class="top-bar-right login">
+        <% if session[:user_id] %>
+        <%= button_to "Log out", sessions_path, method: :delete %>
+        <% else %>
+        <%= button_to "Log In", "/auth/github" %>
+        <% end %>
+        <%= flash[:notice] %>
+      </div>
+    </div>
     </nav>
+    </div>
   </header>
   <%= yield %>
 </body>
+<footer>
+</footer>
 </html>

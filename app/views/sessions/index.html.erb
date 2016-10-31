@@ -1,5 +1,5 @@
 <ul>
   <li><% if logged_in? -%>Welcome, <%= current_user.name %>!<% end -%></li>
-    <li><%= link_to "View All my taks", tasks_path, method: :get %></li>
-    <li><%= link_to "Create new task", tasks_new_path %></li>
+    <button class="button"><%= link_to "View All my taks", tasks_path, method: :get %></button>
+    <button class="button"><%= link_to "Create new task", tasks_new_path %></button>
 </ul>

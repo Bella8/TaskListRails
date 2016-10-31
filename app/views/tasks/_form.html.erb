@@ -1,10 +1,15 @@
-
+<section class="form">
+  <div class="wrap">
+    <ul>
 <%= form_for @task do |f| %>
-  <p><%= f.label :Title %>:</p>
-  <p><%= f.text_field :title %></p>
-  <p><%= f.label :Description %>:</p>
-  <p><%= f.text_field :description %></p>
-  <p><%= f.label :Completed %>:</p>
-  <p><%= f.date_field :completed_at %></p>
-  <p><%= f.submit "Submit" %></p>
+  <li><%= f.label :Title %></li>
+  <li><%= f.text_field :title %></li>
+  <li><%= f.label :Description %></li>
+  <li><%= f.text_field :description %></li>
+  <li><%= f.label :completed %></li>
+  <li><%= f.date_field :completed_at %></li>
+  <button class="submit"><li><%= f.submit "Submit" %></li></button>
 <% end %>
+  </ul>
+</div>
+</section>

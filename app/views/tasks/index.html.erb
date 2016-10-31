@@ -1,19 +1,23 @@
-<h1>List of Tasks</h1>
+<article class="task-index">
+  <div class=" wrap">
+<h3>List of Tasks</h3><hr>
 <ul>
   <% @tasks.each do |task| %>
     <li>
       <%= link_to "#{task.title}", task_path(task) %><br/>
-      <%= link_to "Edit", task_edit_path(task) %>
-      <%= link_to "Delete", task_path(task), method: :delete, data: {confirm: "Are you sure?"} %><br/>
+      <button class="button"><%= link_to "Edit", task_edit_path(task) %></button>
+      <button class="alert button"><%= link_to "Delete", task_path(task), method: :delete, data: {confirm: "Are you sure?"} %></button><br/>
 
       <%=' Task Completed: '%>
       <% if task.task_complete %>
         <%= "Yes" %>
       <% else %>
-        <%= "No" %>
-        <%= button_to "mark completed", task_completed_path(task.id), method: :patch %><br/>
+        <%= "No" %><br>
+      <button class="yellow button"><%= link_to "Mark As Completed", task_completed_path(task.id), method: :patch %></button>
       <% end %>
     </li><br/>
   <% end %>
-  <li><%= link_to "Create new task", tasks_new_path %></li>
+  <button class="button"><%= link_to "Create new task", tasks_new_path %></button>
 </ul>
+  </div>
+</article>
